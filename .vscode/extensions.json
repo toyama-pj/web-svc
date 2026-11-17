@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"ms-python.python",
+		"charliermarsh.ruff",
+		"astral-sh.ty",
+		"usernamehw.errorlens",
+		"tamasfe.even-better-toml",
+	],
+}
