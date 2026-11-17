@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
     command: sleep infinity
     working_dir: /workspaces/web-svc
+    userns_mode: keep-id
     volumes:
       - ..:/workspaces/web-svc
       - python-venv:/workspaces/web-svc/.venv
