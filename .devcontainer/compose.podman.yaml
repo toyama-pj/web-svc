@@ -1,0 +1,7 @@
+# Debian の rootless Podman 向け。compose.yaml の後に読み込む。
+services:
+  app:
+    # ホストの UID/GID を、ベースイメージの vscode (1000:1000) に対応付ける。
+    # keep-id による実行ユーザーの変更を避け、vscode として起動する。
+    user: vscode
+    userns_mode: "keep-id:uid=1000,gid=1000"

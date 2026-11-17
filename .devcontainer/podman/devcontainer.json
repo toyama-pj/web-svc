@@ -1,0 +1,26 @@
+{
+  "name": "web-svc (Debian / Podman)",
+  "dockerComposeFile": [
+    "../compose.yaml",
+    "../compose.podman.yaml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/workspaces/web-svc",
+  "shutdownAction": "stopCompose",
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": false,
+  "forwardPorts": [8000],
+  "postCreateCommand": "sudo chown vscode:vscode .venv && uv sync --locked",
+  "waitFor": "postCreateCommand",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "astral-sh.ty",
+        "usernamehw.errorlens",
+        "tamasfe.even-better-toml"
+      ]
+    }
+  }
+}
