@@ -17,5 +17,6 @@
         "tamasfe.even-better-toml"
       ]
     }
-  }
+  },
+  "updateRemoteUserUID": false
 }
