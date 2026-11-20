@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -126,6 +125,11 @@ STATIC_URL = "static/"
 
 MAILERS: dict[str, dict[str, str]] = {
     "default": {
-        "BACKEND": "django.core.mail.backends.console.EmailBackend",
+        "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
     },
 }
+
+if DEBUG:
+    MAILERS["default"] = {
+        "BACKEND": "django.core.mail.backends.console.EmailBackend",
+    }
