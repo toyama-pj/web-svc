@@ -150,19 +150,21 @@ if DEBUG:
     MAILERS["default"]["BACKEND"] = "django.core.mail.backends.console.EmailBackend"
 
 
-# メール確認コードを必須にする　(django-allauthの設定)
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-ACCOUNT_EMAIL_VERIFICATION_BY_CODE_ENABLED = True
+# メール確認コードの設定　(django-allauthの設定)
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION_BY_CODE_ENABLED = False
 
 # パスキー(WebAuthn)を有効にする
 MFA_SUPPORTED_TYPES = ["webauthn", "recovery_codes"]
-MFA_PASSKEY_SIGNUP_ENABLED = True
+MFA_PASSKEY_SIGNUP_ENABLED = False
 MFA_PASSKEY_LOGIN_ENABLED = True
 
 ACCOUNT_SIGNUP_FIELDS = [
-    "email*",
-    "password1*",
-    "password2*",
+    "username*",
 ]
 
-ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_LOGIN_METHODS = {"username"}
+
+ACCOUNT_ADAPTER = "web_svc.auth.adapters.account_adapter.CustomAccountAdapter"
+
+MFA_ADAPTER = "web_svc.auth.adapters.mfa_adapter.CustomMFAAdapter"
